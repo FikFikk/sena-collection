@@ -12,6 +12,12 @@ use App\Http\Controllers\DashboardController;
 Route::prefix('/dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/shop', [DashboardController::class, 'shop'])->name('dashboard.shop');
+    Route::get('/about', [DashboardController::class, 'about'])->name('dashboard.about');
+    Route::get('/service', [DashboardController::class, 'service'])->name('dashboard.service');
+    Route::get('/blog', [DashboardController::class, 'blog'])->name('dashboard.blog');
+    Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
+    Route::get('/cart', [DashboardController::class, 'cart'])->name('dashboard.cart');
+    Route::get('/checkout', [DashboardController::class, 'checkout'])->name('dashboard.checkout');
 });
 
 Route::prefix('/')->group(function () {

@@ -15,17 +15,17 @@
                 <li class="nav-item {{ Request::routeIs('dashboard.shop') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('dashboard.shop') }}">Shop</a>
                 </li>
-                <li class="nav-item {{ Request::routeIs('dashboard.') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('dashboard.shop') }}">About us</a>
+                <li class="nav-item {{ Request::routeIs('dashboard.about') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('dashboard.about') }}">About us</a>
                 </li>
-                <li class="nav-item  {{ Request::routeIs('dashboard.') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('dashboard.shop') }}">Services</a>
+                <li class="nav-item  {{ Request::routeIs('dashboard.service') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('dashboard.service') }}">Services</a>
                 </li>
-                <li class="nav-item  {{ Request::routeIs('dashboard.') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('dashboard.shop') }}">Blog</a>
+                <li class="nav-item  {{ Request::routeIs('dashboard.blog') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('dashboard.blog') }}">Blog</a>
                 </li>
-                <li class="nav-item  {{ Request::routeIs('dashboard.') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('dashboard.shop') }}">Contact us</a>
+                <li class="nav-item  {{ Request::routeIs('dashboard.contact') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('dashboard.contact') }}">Contact us</a>
                 </li>
             </ul>
 
