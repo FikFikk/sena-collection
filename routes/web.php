@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\DashboardController;
 // Route::get('/', function () {
 //     return view('pages.admin.index');
 // });
+
+Route::get('/admin', [AuthController::class, 'login'])->name('login.view');
 
 Route::prefix('/dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
