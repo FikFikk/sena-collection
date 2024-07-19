@@ -12,7 +12,18 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/admin', [AuthController::class, 'login'])->name('login.view');
 
-Route::prefix('/dashboard')->group(function () {
+Route::middleware('auth')->group(function () {
+    Route::prefix('/admin')->group(function () {
+        Route::get('/home', [AdminController::class, 'index'])->name('admin.index');
+        Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+        Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+        Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+    });
+});
+
+Route::middleware(['guest'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/shop', [DashboardController::class, 'shop'])->name('dashboard.shop');
     Route::get('/about', [DashboardController::class, 'about'])->name('dashboard.about');
@@ -21,13 +32,4 @@ Route::prefix('/dashboard')->group(function () {
     Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
     Route::get('/cart', [DashboardController::class, 'cart'])->name('dashboard.cart');
     Route::get('/checkout', [DashboardController::class, 'checkout'])->name('dashboard.checkout');
-});
-
-Route::prefix('/')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
-    Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
 });
