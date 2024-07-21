@@ -11,6 +11,8 @@ use App\Http\Controllers\DashboardController;
 // });
 
 Route::get('/admin', [AuthController::class, 'login'])->name('login.view');
+Route::post('/admin', [AuthController::class, 'auth'])->name('login.auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('/admin')->group(function () {
