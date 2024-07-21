@@ -15,7 +15,7 @@ Route::post('/admin', [AuthController::class, 'auth'])->name('login.auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::prefix('/admin')->group(function () {
+    Route::middleware('admin')->prefix('/admin')->group(function () {
         Route::get('/home', [AdminController::class, 'index'])->name('admin.index');
         Route::get('/product', [ProductController::class, 'index'])->name('product.index');
         Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');

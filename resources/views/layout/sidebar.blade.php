@@ -9,12 +9,18 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-between align-items-center">
       <div class="image">
         <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
-      <div class="info">
+      <div class="info d-flex align-items-center">
         <a href="#" class="d-block">Admin</a>
+        <a href="{{ route('logout') }}" class="d-block ml-3 badge badge-danger navar-badge" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          Logout
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
       </div>
     </div>
 
