@@ -5,14 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login Admin</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../dist/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="../dist/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  @include('layout.link')
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -70,10 +64,33 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="../dist/plugins/jquery/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+<script>
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    @if(session('status') == 'success')
+      Toast.fire({
+        icon: 'success',
+        title: '{{ session('message') }}'
+      });
+    @elseif(session('status') == 'error')
+      Toast.fire({
+        icon: 'error',
+        title: '{{ session('message') }}'
+      });
+    @endif
+  });
+</script>
 </body>
 </html>

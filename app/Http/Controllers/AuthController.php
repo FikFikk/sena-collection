@@ -27,12 +27,15 @@ class AuthController extends Controller
                 return redirect()->intended(route('admin.index'));
             }
 
-            return redirect()->intended(route('dashboard.index'));
+            $request->session()->flash('status', 'error');
+            $request->session()->flash('message', 'Access denied');
+            Auth::logout();
+            return redirect()->route('login.view');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        $request->session()->flash('status', 'error');
+        $request->session()->flash('message', 'The provided credentials do not match our records.');
+        return back();
     }
 
     public function logout(Request $request)
