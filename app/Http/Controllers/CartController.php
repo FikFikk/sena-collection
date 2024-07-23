@@ -46,6 +46,8 @@ class CartController extends Controller
         ]);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -65,9 +67,33 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cart $cart)
+    public function show()
     {
-        //
+        $cartItems = Cart::with('product')->get();
+        return view('pages.user.cart.cart', compact('cartItems'));
+    }
+
+    public function updateQuantity(Request $request)
+    {
+        $cartItem = Cart::find($request->input('id'));
+
+        if ($request->has('increase')) {
+            $cartItem->quantity++;
+        } elseif ($request->has('decrease')) {
+            $cartItem->quantity--;
+        }
+
+        $cartItem->save();
+
+        return redirect()->back()->with('success', 'Quantity updated successfully.');
+    }
+
+    public function removeItem(Request $request)
+    {
+        $cartItem = Cart::find($request->cart_id);
+        $cartItem->delete();
+
+        return response()->json(['success' => true]);
     }
 
     /**

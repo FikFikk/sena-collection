@@ -36,7 +36,10 @@ Route::get('/about', [DashboardController::class, 'about'])->name('dashboard.abo
 Route::get('/service', [DashboardController::class, 'service'])->name('dashboard.service');
 Route::get('/blog', [DashboardController::class, 'blog'])->name('dashboard.blog');
 Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
-Route::get('/cart', [DashboardController::class, 'cart'])->name('dashboard.cart');
+Route::get('/cart', [CartController::class, 'show'])->name('dashboard.cart');
+Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+Route::post('/cart/remove-item', [CartController::class, 'removeItem'])->name('cart.removeItem');
+
 Route::get('/checkout', [DashboardController::class, 'checkout'])->name('dashboard.checkout');
 
 ;

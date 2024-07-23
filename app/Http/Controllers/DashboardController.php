@@ -33,10 +33,10 @@ class DashboardController extends Controller
     }
 
     public function cart(){
-        return view('pages.user.payment.cart');
+        return view('pages.user.cart.cart');
     }
 
     public function checkout(){
-        return view('pages.user.payment.checkout');
+        return view('pages.user.cart.checkout');
     }
 }
