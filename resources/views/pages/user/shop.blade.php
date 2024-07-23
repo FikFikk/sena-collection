@@ -56,6 +56,24 @@
                 </a>
             </div>
             @endforeach
+						@foreach ($products as $index => $product)
+						<div class="col-12 col-md-4 col-lg-3 mb-5">
+								<a class="product-item" href="#">
+										<img src="{{ asset($product->images) }}" class="img-fluid product-thumbnail" alt="{{ $product->title }}">
+										<h3 class="product-title">{{ $product->title }}</h3>
+										<strong class="product-price">${{ $product->price }}</strong>
+										<form action="{{ route('cart.add') }}" method="POST">
+												@csrf
+												<input type="hidden" name="product_id" value="{{ $product->id }}">
+												<button type="submit" class="">
+														<span class="icon-cross">
+																<img src="../dist/img/cross.svg" class="img-fluid">
+														</span>
+												</button>
+										</form>
+								</a>
+						</div>
+						@endforeach
           </div>
 		    </div>
 		</div>
@@ -170,6 +188,30 @@
 		<script src="../dist/js/bootstrap.bundle.min.js"></script>
 		<script src="../dist/js/tiny-slider.js"></script>
 		<script src="../dist/js/custom.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+        $(function() {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            @if(session('status') == 'success')
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{ session('message') }}'
+                });
+            @elseif(session('status') == 'error')
+                Toast.fire({
+                    icon: 'error',
+                    title: '{{ session('message') }}'
+                });
+            @endif
+        });
+    </script>
 	</body>
 
 </html>

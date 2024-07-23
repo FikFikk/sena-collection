@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CartController;
+
 
 // Route::get('/', function () {
 //     return view('pages.admin.index');
@@ -26,11 +28,16 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+
 Route::get('/shop', [DashboardController::class, 'shop'])->name('dashboard.shop');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
 Route::get('/about', [DashboardController::class, 'about'])->name('dashboard.about');
 Route::get('/service', [DashboardController::class, 'service'])->name('dashboard.service');
 Route::get('/blog', [DashboardController::class, 'blog'])->name('dashboard.blog');
 Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
 Route::get('/cart', [DashboardController::class, 'cart'])->name('dashboard.cart');
 Route::get('/checkout', [DashboardController::class, 'checkout'])->name('dashboard.checkout');
+
+;
 
