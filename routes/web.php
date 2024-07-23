@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 
 // Route::get('/', function () {
@@ -40,7 +41,7 @@ Route::get('/cart', [CartController::class, 'show'])->name('dashboard.cart');
 Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::post('/cart/remove-item', [CartController::class, 'removeItem'])->name('cart.removeItem');
 
-Route::get('/checkout', [DashboardController::class, 'checkout'])->name('dashboard.checkout');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('dashboard.checkout');
 
 ;
 
